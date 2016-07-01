@@ -5,6 +5,6 @@ module.exports = function (emitter, type) {
   if (!emit) return
   emitter.emit = function (event) {
     console.log('%s: %s', type || emitter.constructor.name, event)
-    emit.apply(this, arguments)
+    return emit.apply(this, arguments)
   }
 }
