@@ -1,6 +1,6 @@
 {
   "name": "event-debug",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Log all events emitted by a Node.js EventEmitter object",
   "main": "index.js",
   "dependencies": {
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/watson/event-debug#readme",
   "coordinates": [
-    55.777601056831884,
-    12.589935649598715
+    55.77757487636527,
+    12.589878545299598
   ]
 }
