@@ -12,7 +12,7 @@ var emitter
 
 process.stdout.write = function (chunk) {
   var line = chunk.toString().trim()
-  assert.strictEqual(line, 'EventEmitter: foo')
+  assert.strictEqual(line, 'EventEmitter: foo +0ms')
   process.stdout.write = stdoutWrite
   stdoutWrite.apply(this, arguments)
 }
@@ -25,7 +25,7 @@ emitter.emit('foo')
 
 process.stdout.write = function (chunk) {
   var line = chunk.toString().trim()
-  assert.strictEqual(line, 'MyEmitter: bar')
+  assert.strictEqual(line, 'MyEmitter: bar +0ms')
   process.stdout.write = stdoutWrite
   stdoutWrite.apply(this, arguments)
 }
@@ -40,7 +40,7 @@ emitter.emit('bar')
 
 process.stdout.write = function (chunk) {
   var line = chunk.toString().trim()
-  assert.strictEqual(line, 'Object: baz')
+  assert.strictEqual(line, 'Object: baz +0ms')
   process.stdout.write = stdoutWrite
   stdoutWrite.apply(this, arguments)
 }
