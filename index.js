@@ -1,5 +1,7 @@
 'use strict'
 
+var chalk = require('chalk')
+
 module.exports = function (emitter, type) {
   var emit = emitter && emitter.emit
   if (typeof emit !== 'function') return
@@ -11,7 +13,11 @@ module.exports = function (emitter, type) {
     var diff = end - start
     start = end
 
-    console.log('%s: %s +%sms', type || emitter.constructor.name, event, diff)
+    console.log(
+      chalk.yellow((type || emitter.constructor.name) + ':'),
+      chalk.white(event),
+      chalk.red('+' + diff + 'ms')
+    )
 
     return emit.apply(this, arguments)
   }
