@@ -1,16 +1,15 @@
 'use strict'
 
 var chalk = require('chalk')
+var start = null
 
 module.exports = function (emitter, type) {
   var emit = emitter && emitter.emit
   if (typeof emit !== 'function') return
 
-  var start = Date.now()
-
   emitter.emit = function (event) {
     var end = Date.now()
-    var diff = end - start
+    var diff = start === null ? 0 : end - start
     start = end
 
     console.log(

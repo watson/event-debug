@@ -13,7 +13,7 @@ var emitter
 
 process.stdout.write = function (chunk) {
   var line = strip(chunk.toString().trim())
-  var r = /EventEmitter: foo \+\dms/
+  var r = /EventEmitter: foo \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
   process.stdout.write = stdoutWrite
   stdoutWrite.apply(this, arguments)
@@ -27,7 +27,7 @@ emitter.emit('foo')
 
 process.stdout.write = function (chunk) {
   var line = strip(chunk.toString().trim())
-  var r = /MyEmitter: bar \+\dms/
+  var r = /MyEmitter: bar \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
   process.stdout.write = stdoutWrite
   stdoutWrite.apply(this, arguments)
@@ -43,7 +43,7 @@ emitter.emit('bar')
 
 process.stdout.write = function (chunk) {
   var line = strip(chunk.toString().trim())
-  var r = /Object: baz \+\dms/
+  var r = /Object: baz \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
   process.stdout.write = stdoutWrite
   stdoutWrite.apply(this, arguments)
