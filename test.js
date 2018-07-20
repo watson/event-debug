@@ -6,17 +6,17 @@ var EventEmitter = require('events').EventEmitter
 var strip = require('strip-color')
 var eventDebug = require('./')
 
-var stdoutWrite = process.stdout.write
+var stderrWrite = process.stderr.write
 var emitter
 
 // *****
 
-process.stdout.write = function (chunk) {
+process.stderr.write = function (chunk) {
   var line = strip(chunk.toString().trim())
   var r = /EventEmitter: foo \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
-  process.stdout.write = stdoutWrite
-  stdoutWrite.apply(this, arguments)
+  process.stderr.write = stderrWrite
+  stderrWrite.apply(this, arguments)
 }
 
 emitter = new EventEmitter()
@@ -25,12 +25,12 @@ emitter.emit('foo')
 
 // *****
 
-process.stdout.write = function (chunk) {
+process.stderr.write = function (chunk) {
   var line = strip(chunk.toString().trim())
   var r = /MyEmitter: bar \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
-  process.stdout.write = stdoutWrite
-  stdoutWrite.apply(this, arguments)
+  process.stderr.write = stderrWrite
+  stderrWrite.apply(this, arguments)
 }
 
 function MyEmitter () { EventEmitter.call(this) }
@@ -41,12 +41,12 @@ emitter.emit('bar')
 
 // *****
 
-process.stdout.write = function (chunk) {
+process.stderr.write = function (chunk) {
   var line = strip(chunk.toString().trim())
   var r = /Object: baz \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
-  process.stdout.write = stdoutWrite
-  stdoutWrite.apply(this, arguments)
+  process.stderr.write = stderrWrite
+  stderrWrite.apply(this, arguments)
 }
 
 emitter = { emit: function () {} }
@@ -55,10 +55,10 @@ emitter.emit('baz')
 
 // *****
 
-process.stdout.write = function () {
+process.stderr.write = function () {
   assert(false)
-  process.stdout.write = stdoutWrite
-  stdoutWrite.apply(this, arguments)
+  process.stderr.write = stderrWrite
+  stderrWrite.apply(this, arguments)
 }
 
 eventDebug({})

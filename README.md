@@ -36,7 +36,8 @@ server.listen(3000, function () {
 ```
 
 When running this server and sending an HTTP request to it, the
-following output will be written to STDOUT:
+following output will be produced (the lines written by event-debug are
+all written to STDERR):
 
 <img width="455" alt="screen shot 2017-03-27 at 23 36 03" src="https://cloud.githubusercontent.com/assets/10602/24379216/586a4b8c-1346-11e7-831e-bf3d79639e58.png">
 

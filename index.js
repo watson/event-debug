@@ -12,7 +12,7 @@ module.exports = function (emitter, type) {
     var diff = start === null ? 0 : end - start
     start = end
 
-    console.log(
+    console.error(
       chalk.yellow((type || emitter.constructor.name) + ':'),
       chalk.white(event),
       chalk.red('+' + diff + 'ms')
