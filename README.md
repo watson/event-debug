@@ -2,6 +2,7 @@
 
 Log all events emitted by a Node.js EventEmitter object.
 
+[![npm](https://img.shields.io/npm/v/event-debug.svg)](https://www.npmjs.com/package/event-debug)
 [![Build status](https://travis-ci.org/watson/event-debug.svg?branch=master)](https://travis-ci.org/watson/event-debug)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
 
@@ -43,4 +44,4 @@ all written to STDERR):
 
 ## License
 
-MIT 
+[MIT](https://github.com/watson/event-debug/blob/master/LICENSE)
