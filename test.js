@@ -27,6 +27,21 @@ emitter.emit('foo')
 
 process.stderr.write = function (chunk) {
   var line = strip(chunk.toString().trim())
+  console.log(line)
+  var r = /EventEmitter: test \(hello, 42, \[object Object\], Error: test error\) \+\d+ms/
+  assert.ok(r.test(line), line + ' !== ' + r.source)
+  process.stderr.write = stderrWrite
+  stderrWrite.apply(this, arguments)
+}
+
+emitter = new EventEmitter()
+eventDebug(emitter)
+emitter.emit('test', 'hello', 42, { object: true }, new Error('test error'))
+
+// *****
+
+process.stderr.write = function (chunk) {
+  var line = strip(chunk.toString().trim())
   var r = /MyEmitter: bar \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
   process.stderr.write = stderrWrite
@@ -49,7 +64,7 @@ process.stderr.write = function (chunk) {
   stderrWrite.apply(this, arguments)
 }
 
-emitter = { emit: function () {} }
+emitter = { emit: function () { } }
 eventDebug(emitter)
 emitter.emit('baz')
 
