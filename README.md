@@ -44,4 +44,4 @@ all written to STDERR):
 
 ## License
 
-[MIT](https://github.com/watson/event-debug/blob/master/LICENSE)
+[MIT](LICENSE)
