@@ -27,7 +27,6 @@ emitter.emit('foo')
 
 process.stderr.write = function (chunk) {
   var line = strip(chunk.toString().trim())
-  console.log(line)
   var r = /EventEmitter: test \(hello, 42, \[object Object\], Error: test error\) \+\d+ms/
   assert.ok(r.test(line), line + ' !== ' + r.source)
   process.stderr.write = stderrWrite

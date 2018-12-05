@@ -16,7 +16,7 @@ module.exports = function (emitter, type) {
       console.error(
         chalk.yellow((type || emitter.constructor.name) + ':'),
         chalk.white(event),
-        chalk.white('(' + args.join(', ') + ')'),
+        chalk.gray('(' + args.join(', ') + ')'),
         chalk.red('+' + diff + 'ms')
       )
     } else {
